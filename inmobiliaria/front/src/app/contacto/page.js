@@ -11,7 +11,7 @@ export default function Contacto() {
         <main className="holder contacto">
             <div className="columna">
                 <p>Lo invitamos a dejarnos sus datos y nos contactaremos con usted a la brevedad.</p>
-                <ContactForm postUrl={`${process.env.API_BASE_URL}/api/contacto`} />
+                <ContactForm postUrl={`${process.env.ADMIN_API_BASE_URL}/api/contacto`} />
             </div>
             <div className="columna datos">
                 <h2>Otras vias de comunicacion</h2>

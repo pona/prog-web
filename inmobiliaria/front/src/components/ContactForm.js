@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 
-export default async function ContactForm(postUrl) {
-        const initialForm = {
+export default function ContactForm({ postUrl }) {
+    const initialForm = {
         nombre: '',
         email: '',
         telefono: '',
@@ -24,20 +24,32 @@ export default async function ContactForm(postUrl) {
         e.preventDefault();
         setMsg('');
         setSending(true);
-        
-        const rawResponse = await fetch(postUrl, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-        const response = await rawResponse.json();
-        setSending(false);
-        setMsg(response.message);
-        if (response.error === false) {
-            setFormData(initialForm);
+
+        try {
+            const rawResponse = await fetch(postUrl, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (!rawResponse.ok) {
+                const errorResponse = await rawResponse.json().catch(() => null);
+                throw new Error(errorResponse?.message || 'Error al enviar la solicitud');
+            }
+
+            const response = await rawResponse.json();
+            setMsg(response.message || 'Solicitud enviada correctamente');
+            if (response.error === false) {
+                setFormData(initialForm);
+            }
+        } catch (error) {
+            console.error('ContactForm submit error:', error);
+            setMsg(error.message || 'No se pudo enviar la solicitud. Intente nuevamente.');
+        } finally {
+            setSending(false);
         }
     }
     return (
