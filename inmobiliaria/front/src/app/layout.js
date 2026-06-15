@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
           <div className="holder">
             <div className="logo">
               <img src="/images/logo.png" width="25%" alt="Inmobiliaria Final" />
-              <h1>Inmobiliaria Final</h1>
+              {/* <h1>Inmobiliaria Final</h1> */}
             </div>
           </div>
 

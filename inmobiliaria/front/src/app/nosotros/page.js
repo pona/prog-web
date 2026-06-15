@@ -27,8 +27,8 @@ export default function Nosotros() {
                 <div className="persona">
                     <img src="/images/nosotros/nosotros1.png" width="75" alt="nosotros1" />
                     <h5>Juana Gomez</h5>
-                    <h6>Gerente general</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h6>Agente Inmobiliario</h6>
+                    <p>Tu visión, mi compromiso. Encuentra el lugar donde empieza tu historia.</p>
                 </div>
             </div>
         </section>
