@@ -44,7 +44,7 @@ export default function TasacionesForm() {
                 form.append('imagen', formData.imagen);
             }
 
-            const rawResponse = await fetch('/tasaciones', {
+            const rawResponse = await fetch(`${process.env.ADMIN_API_BASE_URL}/api/tasaciones`, {
                 method: 'POST',
                 body: form
             });
