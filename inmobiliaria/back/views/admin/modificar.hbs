@@ -1,0 +1,43 @@
+<div class="container" style="margin: 100px 0">
+    <div class="row">
+        <div class="col-6 offset-3 border ">
+            <h4>Modificar la propiedad</h4>
+            <form action="/admin/tasaciones/modificar" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="{{propiedad.id}}" />
+                <div class="mb-3 row">
+                    <label class="form-label">Título</label>
+                    <input type="text" class="form-control" name="title" value="{{propiedad.titulo}}" required />
+                </div>
+                <div class="mb-3 row">
+                    <label class="form-label">Precio</label>
+                    <input type="text" class="form-control" name="price" value="{{propiedad.precio}}" required />
+                </div>
+                <div class="mb-3 row">
+                    <label class="form-label">Dirección</label>
+                    <input type="text" class="form-control" name="address" value="{{propiedad.direccion}}" required />
+                </div>
+                <div class="mb-3 row">
+                    <label class="form-label">Descripción</label>
+                    <textarea class="form-control" name="description" rows="3" required>{{propiedad.descripcion}}</textarea>
+                </div>
+                <div class="mb-3 row">
+                    <p>
+                        <label>Imagen: <input type="file" name="imagen" id="imagen" accept="image/*" /></label>
+                    </p>
+                    {{#if propiedad.imagen}}
+                        <p>Imagen actual:</p>
+                        <div>{{{imagenActual}}}</div>
+                        <p>
+                            <label><input type="checkbox" name="img_delete" value="1" /> Eliminar imagen actual</label>
+                            <input type="hidden" name="img_original" value="{{propiedad.imagen}}" />
+                        </p>
+                    {{/if}}
+                </div>
+                <button type="submit" class="btn btn-primary">Modificar</button>
+            </form>
+            {{#if error}}
+                <h5 class="mt-3 text-danger">{{message}}</h5>
+            {{/if}}
+        </div>
+    </div>
+</div>
